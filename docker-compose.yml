@@ -25,6 +25,18 @@ services:
       - app-network
     restart: always
 
+  rabbitmq:
+    image: "rabbitmq:3.12-management"
+    container_name: rabbitmq
+    ports:
+      - "9000:5672"
+      - "9001:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: "admin"
+      RABBITMQ_DEFAULT_PASS: "admin"
+    networks:
+      - app-network
+
 networks:
   app-network:
     driver: bridge
